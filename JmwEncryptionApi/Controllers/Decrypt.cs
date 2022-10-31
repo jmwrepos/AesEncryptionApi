@@ -10,7 +10,14 @@ namespace JmwEncryptionApi.Controllers
         [HttpGet]
         public string Get([FromQueryAttribute] byte[] key, [FromQueryAttribute] byte[] iv, [FromQueryAttribute] byte[] encrypted)
         {
-            return ApiEncryption.Decrypt(key, iv, encrypted);
+            try
+            {
+                return ApiEncryption.Decrypt(key, iv, encrypted);
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
     }
 }

@@ -25,13 +25,13 @@ namespace JmwEncryptionApi
                 // Create an encryptor to perform the stream transform.
                 ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
                 // Create the streams used for encryption.
-#pragma warning disable IDE0063 // Use simple 'using' statement
+                #pragma warning disable IDE0063 // Use simple 'using' statement
                 using (MemoryStream msEncrypt = new())
-#pragma warning restore IDE0063 // Use simple 'using' statement
+                #pragma warning restore IDE0063 // Use simple 'using' statement
                 {
-#pragma warning disable IDE0063 // Use simple 'using' statement
+                    #pragma warning disable IDE0063 // Use simple 'using' statement
                     using (CryptoStream csEncrypt = new(msEncrypt, encryptor, CryptoStreamMode.Write))
-#pragma warning restore IDE0063 // Use simple 'using' statement
+                    #pragma warning restore IDE0063 // Use simple 'using' statement
                     {
                         using (StreamWriter swEncrypt = new(csEncrypt))
                         {
@@ -60,17 +60,17 @@ namespace JmwEncryptionApi
                 // Create a decryptor to perform the stream transform.
                 ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
                 // Create the streams used for decryption.
-#pragma warning disable IDE0063 // Use simple 'using' statement
+                #pragma warning disable IDE0063 // Use simple 'using' statement
                 using (MemoryStream msDecrypt = new(cipherText))
-#pragma warning restore IDE0063 // Use simple 'using' statement
+                #pragma warning restore IDE0063 // Use simple 'using' statement
                 {
-#pragma warning disable IDE0063 // Use simple 'using' statement
+                    #pragma warning disable IDE0063 // Use simple 'using' statement
                     using (CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read))
-#pragma warning restore IDE0063 // Use simple 'using' statement
+                    #pragma warning restore IDE0063 // Use simple 'using' statement
                     {
-#pragma warning disable IDE0063 // Use simple 'using' statement
+                        #pragma warning disable IDE0063 // Use simple 'using' statement
                         using (StreamReader srDecrypt = new(csDecrypt))
-#pragma warning restore IDE0063 // Use simple 'using' statement
+                        #pragma warning restore IDE0063 // Use simple 'using' statement
                         {
                             // Read the decrypted bytes from the decrypting stream
                             // and place them in a string.

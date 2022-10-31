@@ -10,8 +10,15 @@ namespace JmwEncryptionApi.Controllers
         [HttpGet]
         public byte[] Get([FromQueryAttribute] byte[] key, [FromQueryAttribute] byte[] iv, string unencrypted)
         {
-            unencrypted = WebUtility.UrlDecode(unencrypted);
-            return ApiEncryption.Encrypt(key, iv, unencrypted);
+            try
+            {
+                unencrypted = WebUtility.UrlDecode(unencrypted);
+                return ApiEncryption.Encrypt(key, iv, unencrypted);
+            }
+            catch
+            {
+                return Array.Empty<byte>();
+            }
         }
     }
 }
